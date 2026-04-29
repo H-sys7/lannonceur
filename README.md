@@ -2,8 +2,6 @@
 
 Une plateforme moderne et intuitive pour publier et découvrir des annonces locales. **Simple, rapide et sécurisé.**
 
-![License](https://img.shields.io/badge/license-MIT-green)
-![Status](https://img.shields.io/badge/status-active-brightgreen)
 ![Language](https://img.shields.io/badge/language-PHP%20%7C%20JavaScript%20%7C%20HTML%2FCSS-blue)
 
 ---
@@ -19,7 +17,6 @@ Une plateforme moderne et intuitive pour publier et découvrir des annonces loca
 - [Structure du projet](#-structure-du-projet)
 - [API](#-api)
 - [Contribuer](#-contribuer)
-- [Licence](#-licence)
 
 ---
 
@@ -91,7 +88,7 @@ Permettre aux utilisateurs de:
 
 - PHP 7.4 ou supérieur
 - MySQL 5.7 ou supérieur
-- Un serveur web (Apache, Nginx, etc.)
+- Un serveur web (Xampp)
 - Git
 
 ### Étapes d'installation
@@ -159,7 +156,6 @@ DB_PASS=
 Les fichiers sensibles sont ignorés:
 
 - `php/config/db.php` ⚠️
-- `uploads/` (données utilisateur)
 - `node_modules/`, `.vscode/`
 
 ---
@@ -173,19 +169,6 @@ Les fichiers sensibles sont ignorés:
 3. **Publier une annonce** - Accédez au dashboard pour créer une annonce
 4. **Gérer votre panier** - Sauvegardez vos annonces favorites
 5. **Modifier/Supprimer** - Gérez vos annonces depuis le dashboard
-
-### Pour les développeurs
-
-```bash
-# Développement
-php -S localhost:8000
-
-# Tester l'API
-curl http://localhost:8000/php/api/get_annonces.php?page=1
-
-# Vérifier les logs
-tail -f logs/errors.log
-```
 
 ---
 
@@ -255,27 +238,6 @@ lannonceur/
 | `/php/api/ajouter_panier.php`      | POST    | Ajouter une annonce au panier      |
 | `/php/api/supprimer_panier.php`    | POST    | Retirer une annonce du panier      |
 
-### Exemples de requêtes
-
-```javascript
-// Récupérer les annonces
-fetch("php/api/get_annonces.php?page=1")
-  .then((res) => res.json())
-  .then((data) => console.log(data));
-
-// Créer une annonce
-fetch("php/api/creer_annonce.php", {
-  method: "POST",
-  headers: { "Content-Type": "application/json" },
-  body: JSON.stringify({
-    titre: "Mon annonce",
-    description: "Description...",
-    prix: 100,
-    categorie: "electronique",
-  }),
-});
-```
-
 ---
 
 ## 🎨 Catégories disponibles
@@ -318,43 +280,6 @@ Les contributions sont bienvenues! Pour contribuer:
 3. Faites vos changements et committez (`git commit -m 'Add AmazingFeature'`)
 4. Poussez votre branche (`git push origin feature/AmazingFeature`)
 5. Ouvrez une **Pull Request**
-
----
-
-## 📝 Licence
-
-Ce projet est sous licence **MIT**. Voir le fichier `LICENSE` pour plus de détails.
-
----
-
-## 👤 Auteur
-
-**Votre Nom**
-
-- GitHub: [@YourUsername](https://github.com/YourUsername)
-- Email: votre.email@example.com
-
----
-
-## 📞 Support
-
-Pour toute question ou problème:
-
-1. Consultez la section [Dépannage](#-dépannage)
-2. Ouvrez une [issue](https://github.com/YourUsername/lannonceur/issues)
-3. Lisez la [documentation complète](./docs/)
-
----
-
-## 🔄 Changelog
-
-### v1.0.0 (2025)
-
-- ✅ Lancement initial
-- ✅ Système d'authentification
-- ✅ Gestion des annonces
-- ✅ Recherche et filtrage
-- ✅ Mode clair/sombre
 
 ---
 
