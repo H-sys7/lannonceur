@@ -1,0 +1,24 @@
+# Configuration sensible
+php/config/db.php
+
+# Dossiers système
+node_modules/
+.DS_Store
+Thumbs.db
+
+# Fichiers temporaires
+*.log
+*.tmp
+*.swp
+.vscode/
+
+# Uploads (données utilisateur)
+uploads/
+
+# Cache PHP
+.cache/
+
+# Fichiers d'IDE
+.idea/
+*.sublime-project
+*.sublime-workspace
