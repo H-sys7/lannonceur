@@ -1,0 +1,412 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mes Favoris — L'annonceur</title>
+    <!-- Favicon -->
+    <link rel="icon" href="../images/favicon.ico" />
+    <!-- Polices -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Style principal -->
+    <link rel="stylesheet" href="../css/index.css" />
+  </head>
+  <body>
+    <!-- HEADER DU SITE -->
+    <header>
+      <div class="header-container">
+        <!-- LOGO DU SITE -->
+        <div class="logo">
+          <a href="../index.html"><strong>L'annonceur</strong></a>
+        </div>
+
+        <!-- BARRE DE RECHERCHE GLOBALE -->
+        <div class="search-bar">
+          <input
+            type="text"
+            placeholder="Rechercher sur l'annonceur"
+            id="header-search-input"
+          />
+          <button class="search-btn" id="header-search-btn">🔍</button>
+        </div>
+
+        <!-- NAVIGATION PRINCIPALE -->
+        <nav>
+          <a href="produits.html">Annonces</a>
+          <a href="apropos.html">À propos</a>
+          <!-- Lien vers le profil ou la connexion -->
+          <a
+            href="login.html"
+            id="profile-link-btn"
+            aria-label="Mon profil"
+            class="profile-link"
+            >👤</a
+          >
+          <!-- Lien vers le panier/favoris -->
+          <a href="panier.html" aria-label="Mon panier" class="basket-btn"
+            >🧺</a
+          >
+        </nav>
+
+        <!-- BOUTON DE CHANGEMENT DE THÈME (Clair/Sombre) -->
+        <button id="theme-toggle" class="theme-btn">
+          <span class="theme-icon">🌞</span>
+        </button>
+      </div>
+
+      <!-- BARRE DE CATÉGORIES -->
+      <div class="categories-bar">
+        <div class="categories-container">
+          <a href="produits.html?cat=immobilier" class="cat-link"
+            >🏠 Immobilier</a
+          >
+          <a href="produits.html?cat=vehicules" class="cat-link"
+            >🚗 Véhicules</a
+          >
+          <a href="produits.html?cat=electronique" class="cat-link"
+            >📱 Électronique</a
+          >
+          <a href="produits.html?cat=vetements" class="cat-link">👕 Mode</a>
+          <a href="produits.html?cat=mobilier" class="cat-link">🪑 Mobilier</a>
+          <a href="produits.html?cat=emploi" class="cat-link">💼 Emploi</a>
+          <a href="produits.html?cat=formation" class="cat-link"
+            >🎓 Formation</a
+          >
+          <a href="produits.html?cat=services" class="cat-link">🔧 Services</a>
+          <a href="produits.html?cat=loisirs" class="cat-link">🎮 Loisirs</a>
+          <a href="produits.html?cat=livres" class="cat-link">📚 Livres</a>
+        </div>
+      </div>
+    </header>
+
+    <!-- Fil d'Ariane -->
+    <div class="breadcrumb">
+      <div class="breadcrumb-inner">
+        <a href="../index.html">Accueil</a>
+        <span>›</span>
+        <span>Mes Favoris</span>
+      </div>
+    </div>
+
+    <main>
+      <!-- En-tête de la section -->
+      <div class="section-header">
+        <div
+          class="section-header-inner"
+          style="max-width: 1200px; margin: 0 auto; padding: 20px"
+        >
+          <h1>Mes favoris</h1>
+          <p>
+            Retrouvez ici les annonces que vous avez sauvegardées pour plus
+            tard.
+          </p>
+        </div>
+      </div>
+
+      <!-- Conteneur des favoris -->
+      <div
+        class="cart-container"
+        style="
+          max-width: 1200px;
+          margin: 0 auto;
+          padding: 0 20px;
+          display: grid;
+          grid-template-columns: 1fr 300px;
+          gap: 30px;
+        "
+      >
+        <!-- Liste des articles en favoris -->
+        <div
+          class="cart-items"
+          style="
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            overflow: hidden;
+          "
+        >
+          <table
+            class="cart-table"
+            style="width: 100%; border-collapse: collapse"
+          >
+            <thead style="background: var(--bg)">
+              <tr>
+                <th style="padding: 15px; text-align: left">Article</th>
+                <th style="padding: 15px; text-align: left">Prix</th>
+                <th style="padding: 15px; text-align: left">Catégorie</th>
+                <th style="padding: 15px; text-align: center">Action</th>
+              </tr>
+            </thead>
+            <tbody id="favorites-list">
+              <!-- Articles chargés dynamiquement -->
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Résumé et actions -->
+        <aside
+          class="cart-sidebar"
+          style="
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 20px;
+            align-self: start;
+            position: sticky;
+            top: 100px;
+          "
+        >
+          <div class="cart-summary">
+            <h3
+              style="
+                margin-bottom: 15px;
+                border-bottom: 1px solid var(--border);
+                padding-bottom: 10px;
+              "
+            >
+              Résumé
+            </h3>
+            <div
+              class="summary-row"
+              style="
+                display: flex;
+                justify-content: space-between;
+                margin-bottom: 10px;
+                color: var(--muted);
+              "
+            >
+              <span>Articles sauvegardés</span>
+              <span id="fav-count">0</span>
+            </div>
+            <div
+              class="summary-total"
+              style="
+                display: flex;
+                justify-content: space-between;
+                font-weight: 700;
+                font-size: 1.1rem;
+                margin-top: 15px;
+                border-top: 2px solid var(--blue);
+                padding-top: 10px;
+              "
+            >
+              <span>Valeur totale</span>
+              <span id="total-price">0 €</span>
+            </div>
+
+            <!-- Boutons d'action -->
+            <a
+              href="produits.html"
+              class="btn-primary"
+              style="
+                display: block;
+                width: 100%;
+                margin-top: 20px;
+                text-align: center;
+              "
+              >Explorer plus d'annonces</a
+            >
+            <a
+              href="../index.html"
+              class="btn-continue-shopping"
+              style="
+                display: block;
+                text-align: center;
+                margin-top: 15px;
+                font-size: 0.9rem;
+                color: var(--blue);
+              "
+              >← Retour à l'accueil</a
+            >
+          </div>
+        </aside>
+      </div>
+    </main>
+
+    <!-- FOOTER DU SITE -->
+    <footer>
+      <div class="footer-container">
+        <!-- SECTION À PROPOS -->
+        <div class="footer-section footer-about">
+          <h3>À propos de L'annonceur</h3>
+          <p>
+            Votre plateforme de confiance pour publier et découvrir des annonces
+            locales. Connectez acheteurs et vendeurs en toute sécurité.
+          </p>
+          <div class="footer-socials">
+            <a href="#" class="social-link" title="Facebook">f</a>
+            <a href="#" class="social-link" title="Twitter">𝕏</a>
+            <a href="#" class="social-link" title="Instagram">📷</a>
+            <a href="#" class="social-link" title="LinkedIn">in</a>
+          </div>
+        </div>
+
+        <!-- SECTION NAVIGATION -->
+        <div class="footer-section">
+          <h3>Navigation</h3>
+          <ul>
+            <li><a href="../index.html">Accueil</a></li>
+            <li><a href="produits.html">Parcourir les annonces</a></li>
+            <li><a href="apropos.html">À propos de nous</a></li>
+            <li><a href="#">Tarifs & plans</a></li>
+            <li><a href="#">Blog</a></li>
+          </ul>
+        </div>
+
+        <!-- SECTION SERVICES -->
+        <div class="footer-section">
+          <h3>Services</h3>
+          <ul>
+            <li><a href="signup.html">Créer un compte</a></li>
+            <li><a href="dashboard.html">Déposer une annonce</a></li>
+            <li><a href="login.html">Votre profil</a></li>
+            <li><a href="#">Favoris</a></li>
+            <li><a href="dashboard.html">Mes annonces</a></li>
+          </ul>
+        </div>
+
+        <!-- SECTION LÉGAL & SUPPORT -->
+        <div class="footer-section">
+          <h3>Légal & Support</h3>
+          <ul>
+            <li><a href="#">Conditions générales</a></li>
+            <li><a href="#">Politique de confidentialité</a></li>
+            <li><a href="#">Mentions légales</a></li>
+            <li><a href="#">Contracter</a></li>
+            <li><a href="#">Signaler un contenu</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- SECTION BASSE : COPYRIGHT -->
+      <div class="footer-bottom">
+        <p>&copy; 2025 L'annonceur. Tous droits réservés.</p>
+      </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="../js/scripts.js"></script>
+    <script>
+      /**
+       * GESTION DU PANIER (FAVORIS/WISHLIST)
+       * Charge les articles du panier et permet de les retirer
+       */
+      document.addEventListener("DOMContentLoaded", function () {
+        loadPanier();
+      });
+
+      function loadPanier() {
+        fetch("../php/api/get_panier.php")
+          .then(function (r) {
+            return r.json();
+          })
+          .then(function (articles) {
+            var container = document.getElementById("favorites-list");
+
+            if (!articles || articles.length === 0) {
+              container.innerHTML =
+                '<tr><td colspan="4" style="padding: 40px; text-align: center; color: var(--muted);">Votre liste de favoris est vide. <a href="produits.html" style="color: var(--blue); font-weight: 600;">Découvrir les annonces</a></td></tr>';
+              updatePrice([]);
+              return;
+            }
+
+            // Construire les lignes du tableau
+            container.innerHTML = articles
+              .map(function (article) {
+                return (
+                  '<tr style="border-bottom: 1px solid var(--border)">' +
+                  '<td class="item-name" style="padding: 15px; display: flex; align-items: center; gap: 10px;">' +
+                  '<span class="item-emoji" style="font-size: 1.5rem">' +
+                  getEmoji(article.categorie) +
+                  "</span>" +
+                  "<strong>" +
+                  article.titre +
+                  "</strong>" +
+                  "</td>" +
+                  '<td style="padding: 15px">' +
+                  parseFloat(article.prix).toLocaleString("fr-FR") +
+                  " €</td>" +
+                  '<td style="padding: 15px">' +
+                  (article.categorie || "Divers") +
+                  "</td>" +
+                  '<td style="padding: 15px; text-align: center;">' +
+                  '<button class="btn-remove" data-id="' +
+                  article.id +
+                  '" style="background: none; border: none; color: var(--danger); cursor: pointer; font-size: 1.2rem;">✕</button>' +
+                  "</td>" +
+                  "</tr>"
+                );
+              })
+              .join("");
+
+            // Ajouter les événements sur les boutons de suppression
+            document.querySelectorAll(".btn-remove").forEach(function (btn) {
+              btn.addEventListener("click", function () {
+                removeFromPanier(btn.dataset.id, articles);
+              });
+            });
+
+            updatePrice(articles);
+          })
+          .catch(function (err) {
+            console.error("Erreur chargement panier:", err);
+          });
+      }
+
+      function removeFromPanier(productId, articles) {
+        if (
+          !confirm(
+            "Êtes-vous sûr de vouloir retirer cet article de vos favoris ?",
+          )
+        )
+          return;
+
+        fetch("../php/api/supprimer_panier.php", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ produit_id: productId }),
+        })
+          .then(function (r) {
+            return r.json();
+          })
+          .then(function (json) {
+            if (json.succes) {
+              loadPanier(); // Recharger la liste
+            } else {
+              alert("Erreur : " + (json.erreur || "Impossible de supprimer"));
+            }
+          });
+      }
+
+      function updatePrice(articles) {
+        var total = articles.reduce(function (sum, article) {
+          return sum + parseFloat(article.prix || 0);
+        }, 0);
+
+        document.getElementById("fav-count").textContent = articles.length;
+        document.getElementById("total-price").textContent =
+          total.toLocaleString("fr-FR") + " €";
+      }
+
+      function getEmoji(categorie) {
+        var emojis = {
+          immobilier: "🏠",
+          vehicules: "🚗",
+          electronique: "📱",
+          vetements: "👕",
+          mobilier: "🪑",
+          loisirs: "🎮",
+          emploi: "💼",
+          formation: "🎓",
+          services: "🔧",
+          livres: "📚",
+        };
+        return emojis[categorie] || "📦";
+      }
+    </script>
+  </body>
+</html>

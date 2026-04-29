@@ -1,0 +1,679 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mon espace — L'annonceur</title>
+    <!-- Favicon -->
+    <link rel="icon" href="../images/favicon.ico" />
+    <!-- Polices -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Style principal -->
+    <link rel="stylesheet" href="../css/index.css" />
+  </head>
+  <body>
+    <!-- HEADER DU SITE -->
+    <header>
+      <div class="header-container">
+        <!-- LOGO DU SITE -->
+        <div class="logo">
+          <a href="../index.html"><strong>L'annonceur</strong></a>
+        </div>
+
+        <!-- BARRE DE RECHERCHE GLOBALE -->
+        <div class="search-bar">
+          <input
+            type="text"
+            placeholder="Rechercher sur l'annonceur"
+            id="header-search-input"
+          />
+          <button class="search-btn" id="header-search-btn">🔍</button>
+        </div>
+
+        <!-- NAVIGATION PRINCIPALE -->
+        <nav>
+          <a href="produits.html">Annonces</a>
+          <a href="apropos.html">À propos</a>
+          <!-- Lien vers le profil ou la connexion -->
+          <a
+            href="login.html"
+            id="profile-link-btn"
+            aria-label="Mon profil"
+            class="profile-link"
+            >👤</a
+          >
+          <!-- Lien vers le panier/favoris -->
+          <a href="panier.html" aria-label="Mon panier" class="basket-btn"
+            >🧺</a
+          >
+        </nav>
+
+        <!-- BOUTON DE CHANGEMENT DE THÈME (Clair/Sombre) -->
+        <button id="theme-toggle" class="theme-btn">
+          <span class="theme-icon">🌞</span>
+        </button>
+      </div>
+
+      <!-- BARRE DE CATÉGORIES -->
+      <div class="categories-bar">
+        <div class="categories-container">
+          <a href="produits.html?cat=immobilier" class="cat-link"
+            >🏠 Immobilier</a
+          >
+          <a href="produits.html?cat=vehicules" class="cat-link"
+            >🚗 Véhicules</a
+          >
+          <a href="produits.html?cat=electronique" class="cat-link"
+            >📱 Électronique</a
+          >
+          <a href="produits.html?cat=vetements" class="cat-link">👕 Mode</a>
+          <a href="produits.html?cat=mobilier" class="cat-link">🪑 Mobilier</a>
+          <a href="produits.html?cat=emploi" class="cat-link">💼 Emploi</a>
+          <a href="produits.html?cat=formation" class="cat-link"
+            >🎓 Formation</a
+          >
+          <a href="produits.html?cat=services" class="cat-link">🔧 Services</a>
+          <a href="produits.html?cat=loisirs" class="cat-link">🎮 Loisirs</a>
+          <a href="produits.html?cat=livres" class="cat-link">📚 Livres</a>
+        </div>
+      </div>
+    </header>
+
+    <!-- Fil d'Ariane -->
+    <div class="breadcrumb">
+      <div class="breadcrumb-inner">
+        <a href="../index.html">Accueil</a>
+        <span>›</span>
+        <span>Mon espace</span>
+      </div>
+    </div>
+
+    <main>
+      <!-- En-tête du tableau de bord avec les infos utilisateur -->
+      <div class="dashboard-header">
+        <div class="user-profile">
+          <div class="profile-avatar">👤</div>
+          <div class="profile-info">
+            <h1 id="user-pseudo">Chargement...</h1>
+            <p id="user-email">—</p>
+            <p class="join-date" id="join-date">—</p>
+          </div>
+          <!-- Bouton de déconnexion -->
+          <button
+            class="btn-logout"
+            id="logout-btn"
+            style="
+              margin-left: auto;
+              background: var(--blue);
+              color: white;
+              border: none;
+              padding: 8px 15px;
+              border-radius: 5px;
+              cursor: pointer;
+            "
+          >
+            Déconnexion
+          </button>
+        </div>
+      </div>
+
+      <!-- Système d'onglets pour naviguer entre la liste et la création -->
+      <div class="dashboard-tabs">
+        <button class="tab-btn active" data-tab="mes-annonces">
+          Mes annonces
+        </button>
+        <button class="tab-btn" data-tab="creer-annonce">
+          Déposer une annonce
+        </button>
+      </div>
+
+      <div class="dashboard-content">
+        <!-- Onglet 1 : Liste des annonces de l'utilisateur -->
+        <div id="mes-annonces" class="tab-content active">
+          <div class="annonces-container" id="annonces-list">
+            <p class="empty-message">Chargement de vos annonces...</p>
+          </div>
+        </div>
+
+        <!-- Onglet 2 : Formulaire de création d'annonce -->
+        <div id="creer-annonce" class="tab-content">
+          <div class="create-form-container">
+            <h2 id="form-title">Déposer une nouvelle annonce</h2>
+            <form
+              id="form-create-annonce"
+              class="create-form"
+              enctype="multipart/form-data"
+            >
+              <!-- Input caché pour l'ID annonce (modification) -->
+              <input type="hidden" id="annonce_id" name="annonce_id" value="" />
+              <div class="form-group">
+                <label for="titre">Titre de l'annonce *</label>
+                <input
+                  type="text"
+                  id="titre"
+                  name="titre"
+                  required
+                  placeholder="Ex : iPhone 13 Pro — excellent état"
+                  maxlength="255"
+                />
+              </div>
+              <div class="form-group">
+                <label for="description">Description *</label>
+                <textarea
+                  id="description"
+                  name="description"
+                  required
+                  placeholder="Décrivez votre article en détail..."
+                  rows="5"
+                  maxlength="1000"
+                ></textarea>
+              </div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="prix">Prix (€) *</label>
+                  <input
+                    type="number"
+                    id="prix"
+                    name="prix"
+                    required
+                    placeholder="0"
+                    min="0"
+                    step="0.01"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="categorie">Catégorie *</label>
+                  <select id="categorie" name="categorie" required>
+                    <option value="">— Sélectionner —</option>
+                    <option value="immobilier">🏠 Immobilier</option>
+                    <option value="vehicules">🚗 Véhicules</option>
+                    <option value="electronique">📱 Électronique</option>
+                    <option value="vetements">👕 Vêtements</option>
+                    <option value="mobilier">🪑 Mobilier</option>
+                    <option value="loisirs">🎮 Loisirs</option>
+                    <option value="emploi">💼 Emploi</option>
+                    <option value="autre">📦 Autre</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="contact">Téléphone de contact *</label>
+                <input
+                  type="tel"
+                  id="contact"
+                  name="contact"
+                  required
+                  placeholder="0601020304"
+                  pattern="[0-9]{10}"
+                />
+                <small class="form-help"
+                  >Format : 10 chiffres (ex: 0601020304)</small
+                >
+              </div>
+              <div class="form-group">
+                <label>Photo de l'article *</label>
+                <div class="file-input-wrapper">
+                  <input
+                    type="file"
+                    id="image"
+                    name="image"
+                    required
+                    accept="image/*"
+                  />
+                  <label for="image" class="file-label"
+                    >Cliquez pour sélectionner une image</label
+                  >
+                </div>
+                <small class="form-help"
+                  >Formats acceptés : JPG, PNG, GIF — Max 5 Mo</small
+                >
+                <div id="image-preview" class="image-preview"></div>
+              </div>
+              <button
+                type="submit"
+                class="btn-primary btn-submit"
+                id="submit-btn"
+                style="width: 100%"
+              >
+                Déposer l'annonce
+              </button>
+              <button
+                type="button"
+                id="cancel-btn"
+                class="btn-secondary"
+                style="width: 100%; display: none; margin-top: 8px"
+              >
+                Annuler
+              </button>
+              <div id="create-message" class="form-message"></div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- FOOTER DU SITE -->
+    <footer>
+      <div class="footer-container">
+        <!-- SECTION À PROPOS -->
+        <div class="footer-section footer-about">
+          <h3>À propos de L'annonceur</h3>
+          <p>
+            Votre plateforme de confiance pour publier et découvrir des annonces
+            locales. Connectez acheteurs et vendeurs en toute sécurité.
+          </p>
+          <div class="footer-socials">
+            <a href="#" class="social-link" title="Facebook">f</a>
+            <a href="#" class="social-link" title="Twitter">𝕏</a>
+            <a href="#" class="social-link" title="Instagram">📷</a>
+            <a href="#" class="social-link" title="LinkedIn">in</a>
+          </div>
+        </div>
+
+        <!-- SECTION NAVIGATION -->
+        <div class="footer-section">
+          <h3>Navigation</h3>
+          <ul>
+            <li><a href="../index.html">Accueil</a></li>
+            <li><a href="produits.html">Parcourir les annonces</a></li>
+            <li><a href="apropos.html">À propos de nous</a></li>
+            <li><a href="#">Tarifs & plans</a></li>
+            <li><a href="#">Blog</a></li>
+          </ul>
+        </div>
+
+        <!-- SECTION SERVICES -->
+        <div class="footer-section">
+          <h3>Services</h3>
+          <ul>
+            <li><a href="signup.html">Créer un compte</a></li>
+            <li><a href="dashboard.html">Déposer une annonce</a></li>
+            <li><a href="login.html">Votre profil</a></li>
+            <li><a href="#">Favoris</a></li>
+            <li><a href="dashboard.html">Mes annonces</a></li>
+          </ul>
+        </div>
+
+        <!-- SECTION LÉGAL & SUPPORT -->
+        <div class="footer-section">
+          <h3>Légal & Support</h3>
+          <ul>
+            <li><a href="#">Conditions générales</a></li>
+            <li><a href="#">Politique de confidentialité</a></li>
+            <li><a href="#">Mentions légales</a></li>
+            <li><a href="#">Contracter</a></li>
+            <li><a href="#">Signaler un contenu</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- SECTION BASSE : COPYRIGHT -->
+      <div class="footer-bottom">
+        <p>&copy; 2025 L'annonceur. Tous droits réservés.</p>
+      </div>
+    </footer>
+
+    <!-- Scripts globaux -->
+    <script src="../js/scripts.js"></script>
+
+    <script>
+      /**
+       * GESTION DU TABLEAU DE BORD (DASHBOARD)
+       * Ce script gère la session, l'affichage des annonces et la création de nouvelles offres.
+       */
+
+      // --- GESTION DES ONGLETS ---
+      function switchTab(name) {
+        document.querySelectorAll(".tab-content").forEach(function (el) {
+          el.classList.remove("active");
+        });
+        document.querySelectorAll(".tab-btn").forEach(function (el) {
+          el.classList.remove("active");
+        });
+
+        var targetTab = document.getElementById(name);
+        var targetBtn = document.querySelector('[data-tab="' + name + '"]');
+
+        if (targetTab) targetTab.classList.add("active");
+        if (targetBtn) targetBtn.classList.add("active");
+      }
+
+      document.querySelectorAll(".tab-btn").forEach(function (btn) {
+        btn.addEventListener("click", function () {
+          switchTab(btn.dataset.tab);
+        });
+      });
+
+      // --- GESTION DE LA SESSION UTILISATEUR ---
+      function checkSession() {
+        // Appel à l'API pour vérifier si l'utilisateur est connecté
+        fetch("../php/api/check_session.php")
+          .then(function (r) {
+            return r.json();
+          })
+          .then(function (json) {
+            if (!json.connected) {
+              // Redirection vers la page de connexion si non connecté
+              window.location.href = "login.html";
+              return;
+            }
+            // Affichage des informations de l'utilisateur
+            document.getElementById("user-pseudo").textContent =
+              json.pseudo || "Utilisateur";
+            document.getElementById("user-email").textContent =
+              json.email || "";
+            document.getElementById("join-date").textContent =
+              "Membre depuis le " + (json.date || "2026");
+
+            // Une fois connecté, on charge ses annonces
+            loadAnnonces();
+          })
+          .catch(function (err) {
+            console.error("Erreur session:", err);
+            document.getElementById("user-pseudo").textContent =
+              "Erreur de connexion";
+          });
+      }
+
+      // --- CHARGEMENT DES ANNONCES DE L'UTILISATEUR ---
+      function loadAnnonces() {
+        fetch("../php/api/mes_annonces.php")
+          .then(function (r) {
+            return r.json();
+          })
+          .then(function (annonces) {
+            var container = document.getElementById("annonces-list");
+
+            if (!annonces || annonces.length === 0) {
+              container.innerHTML =
+                '<p class="empty-message">Vous n\'avez pas encore publié d\'annonce. <a href="#" class="create-link" onclick="switchTab(\'creer-annonce\');return false;">Créer ma première annonce</a></p>';
+              return;
+            }
+
+            container.innerHTML = annonces
+              .map(function (a) {
+                var img = a.image_url
+                  ? '<img src="../uploads/' +
+                    a.image_url +
+                    '" alt="' +
+                    a.titre +
+                    '" class="annonce-image">'
+                  : '<div class="annonce-image" style="background:#e8e8e4;display:flex;align-items:center;justify-content:center;font-size:2rem">📦</div>';
+
+                return (
+                  '<div class="annonce-card">' +
+                  img +
+                  '<div class="annonce-info">' +
+                  "<h3>" +
+                  a.titre +
+                  "</h3>" +
+                  '<div class="price">' +
+                  parseFloat(a.prix).toLocaleString("fr-FR") +
+                  " €</div>" +
+                  '<span class="category">' +
+                  (a.categorie || "Divers") +
+                  "</span>" +
+                  '<p class="desc">' +
+                  (a.description
+                    ? a.description.substring(0, 80) + "..."
+                    : "") +
+                  "</p>" +
+                  '<div class="annonce-actions">' +
+                  '<button class="btn-edit" data-id="' +
+                  a.id +
+                  '" style="flex:1; padding:8px; background:var(--blue); color:white; border:none; border-radius:4px; cursor:pointer; margin-right:4px;">Modifier</button>' +
+                  '<button class="btn-delete" data-id="' +
+                  a.id +
+                  '" style="flex:1; padding:8px; background:#fff; color:var(--danger); border:1px solid var(--danger); border-radius:4px; cursor:pointer;">Supprimer</button>' +
+                  "</div>" +
+                  "</div>" +
+                  "</div>"
+                );
+              })
+              .join("");
+
+            // Ajout des événements sur les boutons de suppression
+            document.querySelectorAll(".btn-delete").forEach(function (btn) {
+              btn.addEventListener("click", function () {
+                deleteAnnonce(btn.dataset.id);
+              });
+            });
+
+            // Ajout des événements sur les boutons de modification
+            document.querySelectorAll(".btn-edit").forEach(function (btn) {
+              btn.addEventListener("click", function () {
+                editAnnonce(btn.dataset.id);
+              });
+            });
+          })
+          .catch(function (err) {
+            console.error("Erreur chargement annonces:", err);
+          });
+      }
+
+      // --- MODIFICATION D'UNE ANNONCE ---
+      function editAnnonce(id) {
+        // Chercher l'annonce dans les annonces chargées
+        fetch("../php/api/mes_annonces.php")
+          .then(function (r) {
+            return r.json();
+          })
+          .then(function (annonces) {
+            var annonce = annonces.find(function (a) {
+              return a.id == id;
+            });
+
+            if (!annonce) {
+              alert("Annonce non trouvée");
+              return;
+            }
+
+            // Peupler le formulaire avec les données de l'annonce
+            document.getElementById("annonce_id").value = annonce.id;
+            document.getElementById("titre").value = annonce.titre;
+            document.getElementById("description").value = annonce.description;
+            document.getElementById("prix").value = annonce.prix;
+            document.getElementById("categorie").value = annonce.categorie;
+            document.getElementById("contact").value = annonce.contact;
+
+            // Afficher l'aperçu de l'image existante
+            if (annonce.image_url) {
+              document.getElementById("image-preview").innerHTML =
+                '<img src="../uploads/' +
+                annonce.image_url +
+                '" alt="Aperçu" style="max-width:100%; max-height:200px; border-radius:8px; margin-top:10px; border:1px solid var(--border);">';
+            }
+
+            // Modifier l'UI du formulaire pour le mode édition
+            document.getElementById("form-title").textContent =
+              "Modifier l'annonce";
+            document.getElementById("submit-btn").textContent =
+              "Enregistrer les modifications";
+            document.getElementById("cancel-btn").style.display = "block";
+
+            // Rendre le champ image optionnel en édition
+            document.getElementById("image").required = false;
+
+            // Changer la description du label de l'image
+            document.querySelector(".file-label").textContent =
+              "Cliquez pour changer l'image (optionnel)";
+
+            // Scroller vers le formulaire
+            document
+              .getElementById("creer-annonce")
+              .scrollIntoView({ behavior: "smooth" });
+
+            // Afficher l'onglet
+            switchTab("creer-annonce");
+          })
+          .catch(function (err) {
+            console.error("Erreur chargement annonce:", err);
+            alert("Erreur lors du chargement de l'annonce");
+          });
+      }
+
+      // --- ANNULATION DE LA MODIFICATION ---
+      document
+        .getElementById("cancel-btn")
+        .addEventListener("click", function () {
+          // Réinitialiser le formulaire
+          document.getElementById("form-create-annonce").reset();
+          document.getElementById("annonce_id").value = "";
+          document.getElementById("image-preview").innerHTML = "";
+          document.querySelector(".file-label").textContent =
+            "Cliquez pour sélectionner une image";
+
+          // Restaurer l'UI du formulaire
+          document.getElementById("form-title").textContent =
+            "Déposer une nouvelle annonce";
+          document.getElementById("submit-btn").textContent =
+            "Déposer l'annonce";
+          document.getElementById("cancel-btn").style.display = "none";
+
+          // Rendre le champ image obligatoire
+          document.getElementById("image").required = true;
+
+          // Revenir à la liste des annonces
+          switchTab("mes-annonces");
+        });
+
+      // --- SUPPRESSION D'UNE ANNONCE ---
+      function deleteAnnonce(id) {
+        if (
+          !confirm(
+            "Êtes-vous sûr de vouloir supprimer cette annonce ? Cette action est irréversible.",
+          )
+        )
+          return;
+
+        fetch("../php/api/supprimer_annonce.php", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ id: id }),
+        })
+          .then(function (r) {
+            return r.json();
+          })
+          .then(function (json) {
+            if (json.succes) {
+              loadAnnonces(); // Recharger la liste
+            } else {
+              alert(
+                "Erreur : " +
+                  (json.erreur || "Impossible de supprimer l'annonce"),
+              );
+            }
+          });
+      }
+
+      // --- PRÉVISUALISATION DE L'IMAGE ---
+      document.getElementById("image").addEventListener("change", function (e) {
+        var file = e.target.files[0];
+        if (!file) return;
+
+        var reader = new FileReader();
+        reader.onload = function (ev) {
+          document.getElementById("image-preview").innerHTML =
+            '<img src="' +
+            ev.target.result +
+            '" alt="Aperçu" style="max-width:100%; max-height:200px; border-radius:8px; margin-top:10px; border:1px solid var(--border);">';
+          document.querySelector(".file-label").textContent =
+            "Fichier sélectionné : " + file.name;
+        };
+        reader.readAsDataURL(file);
+      });
+
+      // --- SOUMISSION DU FORMULAIRE DE CRÉATION/MODIFICATION ---
+      document
+        .getElementById("form-create-annonce")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+          var msg = document.getElementById("create-message");
+          var annonce_id = document.getElementById("annonce_id").value;
+
+          // Déterminer si c'est une création ou une modification
+          var isEdit = annonce_id !== "";
+          var apiUrl = isEdit
+            ? "../php/api/modifier_annonce.php"
+            : "../php/api/creer_annonce.php";
+
+          msg.textContent = isEdit
+            ? "Modification de votre annonce en cours..."
+            : "Publication de votre annonce en cours...";
+          msg.className = "form-message info";
+
+          var formData = new FormData(this);
+
+          fetch(apiUrl, {
+            method: "POST",
+            body: formData,
+          })
+            .then(function (r) {
+              return r.json();
+            })
+            .then(function (json) {
+              if (json.succes) {
+                msg.textContent = isEdit
+                  ? "✓ Votre annonce a été modifiée avec succès !"
+                  : "✓ Votre annonce a été publiée avec succès !";
+                msg.className = "form-message success";
+
+                // Réinitialisation et retour à la liste après un délai
+                setTimeout(function () {
+                  document.getElementById("form-create-annonce").reset();
+                  document.getElementById("annonce_id").value = "";
+                  document.getElementById("image-preview").innerHTML = "";
+                  document.querySelector(".file-label").textContent =
+                    "Cliquez pour sélectionner une image";
+
+                  // Restaurer l'UI du formulaire
+                  document.getElementById("form-title").textContent =
+                    "Déposer une nouvelle annonce";
+                  document.getElementById("submit-btn").textContent =
+                    "Déposer l'annonce";
+                  document.getElementById("cancel-btn").style.display = "none";
+                  document.getElementById("image").required = true;
+
+                  loadAnnonces();
+                  switchTab("mes-annonces");
+                  msg.textContent = "";
+                  msg.className = "form-message";
+                }, 2000);
+              } else {
+                msg.textContent =
+                  "Erreur : " +
+                  (json.erreur ||
+                    "Une erreur est survenue lors de l'opération");
+                msg.className = "form-message error";
+              }
+            })
+            .catch(function (err) {
+              msg.textContent = "Erreur réseau : " + err.message;
+              msg.className = "form-message error";
+            });
+        });
+
+      // --- GESTION DE LA DÉCONNEXION ---
+      document
+        .getElementById("logout-btn")
+        .addEventListener("click", function () {
+          fetch("../php/api/logout.php")
+            .then(function () {
+              localStorage.removeItem("isLoggedIn");
+              window.location.href = "../index.html";
+            })
+            .catch(function () {
+              localStorage.removeItem("isLoggedIn");
+              window.location.href = "../index.html";
+            });
+        });
+
+      // Lancement de la vérification au chargement
+      checkSession();
+    </script>
+  </body>
+</html>

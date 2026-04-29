@@ -1,0 +1,292 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>À propos — L'annonceur</title>
+    <!-- Favicon -->
+    <link rel="icon" href="../images/favicon.ico" />
+    <!-- Polices -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Style principal -->
+    <link rel="stylesheet" href="../css/index.css" />
+  </head>
+  <body>
+    <!-- HEADER DU SITE -->
+    <header>
+      <div class="header-container">
+        <!-- LOGO DU SITE -->
+        <div class="logo">
+          <a href="../index.html"><strong>L'annonceur</strong></a>
+        </div>
+
+        <!-- BARRE DE RECHERCHE GLOBALE -->
+        <div class="search-bar">
+          <input
+            type="text"
+            placeholder="Rechercher sur l'annonceur"
+            id="header-search-input"
+          />
+          <button class="search-btn" id="header-search-btn">🔍</button>
+        </div>
+
+        <!-- NAVIGATION PRINCIPALE -->
+        <nav>
+          <a href="produits.html">Annonces</a>
+          <a href="apropos.html">À propos</a>
+          <!-- Lien vers le profil ou la connexion -->
+          <a
+            href="login.html"
+            id="profile-link-btn"
+            aria-label="Mon profil"
+            class="profile-link"
+            >👤</a
+          >
+          <!-- Lien vers le panier/favoris -->
+          <a href="panier.html" aria-label="Mon panier" class="basket-btn"
+            >🧺</a
+          >
+        </nav>
+
+        <!-- BOUTON DE CHANGEMENT DE THÈME (Clair/Sombre) -->
+        <button id="theme-toggle" class="theme-btn">
+          <span class="theme-icon">🌞</span>
+        </button>
+      </div>
+
+      <!-- BARRE DE CATÉGORIES -->
+      <div class="categories-bar">
+        <div class="categories-container">
+          <a href="produits.html?cat=immobilier" class="cat-link"
+            >🏠 Immobilier</a
+          >
+          <a href="produits.html?cat=vehicules" class="cat-link"
+            >🚗 Véhicules</a
+          >
+          <a href="produits.html?cat=electronique" class="cat-link"
+            >📱 Électronique</a
+          >
+          <a href="produits.html?cat=vetements" class="cat-link">👕 Mode</a>
+          <a href="produits.html?cat=mobilier" class="cat-link">🪑 Mobilier</a>
+          <a href="produits.html?cat=emploi" class="cat-link">💼 Emploi</a>
+          <a href="produits.html?cat=formation" class="cat-link"
+            >🎓 Formation</a
+          >
+          <a href="produits.html?cat=services" class="cat-link">🔧 Services</a>
+          <a href="produits.html?cat=loisirs" class="cat-link">🎮 Loisirs</a>
+          <a href="produits.html?cat=livres" class="cat-link">📚 Livres</a>
+        </div>
+      </div>
+    </header>
+
+    <!-- Fil d'Ariane pour la navigation -->
+    <div class="breadcrumb">
+      <div class="breadcrumb-inner">
+        <a href="../index.html">Accueil</a>
+        <span>›</span>
+        <span>À propos</span>
+      </div>
+    </div>
+
+    <main>
+      <div style="max-width: 1100px; margin: 40px auto; padding: 0 24px">
+        <!-- Section : Pourquoi nous choisir ? -->
+        <section class="features">
+          <h2 style="font-size: 1.6rem; font-weight: 700; margin-bottom: 8px">
+            Pourquoi L'annonceur ?
+          </h2>
+          <p class="section-intro">
+            La plateforme d'annonces locale simple, gratuite et sécurisée
+          </p>
+
+          <div class="features-grid">
+            <div class="feature-card">
+              <div class="feature-icon">🆓</div>
+              <h3>100% Gratuit</h3>
+              <p>
+                Publier et consulter des annonces est entièrement gratuit. Aucun
+                abonnement caché.
+              </p>
+            </div>
+            <div class="feature-card">
+              <div class="feature-icon">🔒</div>
+              <h3>Sécurisé</h3>
+              <p>
+                Vos données sont protégées. Vos mots de passe sont hachés avec
+                des algorithmes modernes.
+              </p>
+            </div>
+            <div class="feature-card">
+              <div class="feature-icon">📍</div>
+              <h3>Local</h3>
+              <p>
+                Trouvez des annonces près de chez vous et réduisez les frais de
+                livraison.
+              </p>
+            </div>
+            <div class="feature-card">
+              <div class="feature-icon">⚡</div>
+              <h3>Rapide</h3>
+              <p>
+                Publiez votre annonce en moins de 2 minutes. Simple et sans
+                prise de tête.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <!-- Section : Foire Aux Questions (FAQ) -->
+        <section class="faq-section">
+          <h2 style="font-size: 1.4rem; font-weight: 700; margin-bottom: 8px">
+            Questions fréquentes
+          </h2>
+          <p class="section-intro">Tout ce que vous devez savoir</p>
+
+          <div class="faq-container">
+            <!-- Chaque bloc faq-item est géré par le script FAQ (scripts.js) -->
+            <div class="faq-item">
+              <button class="faq-question">
+                <span>Comment publier une annonce ?</span>
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                <p>
+                  Créez un compte gratuit, connectez-vous, puis rendez-vous dans
+                  votre tableau de bord pour déposer votre première annonce.
+                  Renseignez le titre, la description, le prix, la catégorie et
+                  ajoutez une photo.
+                </p>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question">
+                <span>Est-ce vraiment gratuit ?</span>
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                <p>
+                  Oui, entièrement. La publication et la consultation d'annonces
+                  sont gratuites et illimitées pour tous les particuliers.
+                </p>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question">
+                <span>Comment contacter un vendeur ?</span>
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                <p>
+                  Cliquez sur une annonce pour voir les détails, puis utilisez
+                  les informations de contact fournies par le vendeur.
+                </p>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question">
+                <span>Comment supprimer une annonce ?</span>
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                <p>
+                  Depuis votre tableau de bord ("Mes annonces"), cliquez sur le
+                  bouton "Supprimer" de l'annonce que vous souhaitez retirer.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <!-- FOOTER DU SITE -->
+    <footer>
+      <div class="footer-container">
+        <!-- SECTION À PROPOS -->
+        <div class="footer-section footer-about">
+          <h3>À propos de L'annonceur</h3>
+          <p>
+            Votre plateforme de confiance pour publier et découvrir des annonces
+            locales. Connectez acheteurs et vendeurs en toute sécurité.
+          </p>
+          <div class="footer-socials">
+            <a href="#" class="social-link" title="Facebook">f</a>
+            <a href="#" class="social-link" title="Twitter">𝕏</a>
+            <a href="#" class="social-link" title="Instagram">📷</a>
+            <a href="#" class="social-link" title="LinkedIn">in</a>
+          </div>
+        </div>
+
+        <!-- SECTION NAVIGATION -->
+        <div class="footer-section">
+          <h3>Navigation</h3>
+          <ul>
+            <li><a href="../index.html">Accueil</a></li>
+            <li><a href="produits.html">Parcourir les annonces</a></li>
+            <li><a href="apropos.html">À propos de nous</a></li>
+            <li><a href="#">Tarifs & plans</a></li>
+            <li><a href="#">Blog</a></li>
+          </ul>
+        </div>
+
+        <!-- SECTION SERVICES -->
+        <div class="footer-section">
+          <h3>Services</h3>
+          <ul>
+            <li><a href="signup.html">Créer un compte</a></li>
+            <li><a href="dashboard.html">Déposer une annonce</a></li>
+            <li><a href="login.html">Votre profil</a></li>
+            <li><a href="#">Favoris</a></li>
+            <li><a href="dashboard.html">Mes annonces</a></li>
+          </ul>
+        </div>
+
+        <!-- SECTION LÉGAL & SUPPORT -->
+        <div class="footer-section">
+          <h3>Légal & Support</h3>
+          <ul>
+            <li><a href="#">Conditions générales</a></li>
+            <li><a href="#">Politique de confidentialité</a></li>
+            <li><a href="#">Mentions légales</a></li>
+            <li><a href="#">Contracter</a></li>
+            <li><a href="#">Signaler un contenu</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- SECTION BASSE : COPYRIGHT -->
+      <div class="footer-bottom">
+        <p>&copy; 2025 L'annonceur. Tous droits réservés.</p>
+      </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="../js/scripts.js"></script>
+    <script>
+      /**
+       * Logique d'accordéon pour la FAQ
+       * Permet d'ouvrir et fermer les réponses au clic sur les questions.
+       */
+      document.addEventListener("DOMContentLoaded", function () {
+        var questions = document.querySelectorAll(".faq-question");
+        questions.forEach(function (btn) {
+          btn.addEventListener("click", function () {
+            var item = this.parentElement;
+            // Toggle de la classe 'active' pour afficher/masquer la réponse
+            item.classList.toggle("active");
+            // Mise à jour de l'icône (+ ou -)
+            var icon = this.querySelector(".faq-icon");
+            icon.textContent = item.classList.contains("active") ? "-" : "+";
+          });
+        });
+      });
+    </script>
+  </body>
+</html>

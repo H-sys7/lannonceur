@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Inscription — L'annonceur</title>
+    <!-- Favicon -->
+    <link rel="icon" href="../images/favicon.ico" />
+    <!-- Polices -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Style principal -->
+    <link rel="stylesheet" href="../css/index.css" />
+  </head>
+  <body>
+    <!-- HEADER DU SITE -->
+    <header>
+      <div class="header-container">
+        <!-- LOGO DU SITE -->
+        <div class="logo">
+          <a href="../index.html"><strong>L'annonceur</strong></a>
+        </div>
+
+        <!-- BARRE DE RECHERCHE GLOBALE -->
+        <div class="search-bar">
+          <input
+            type="text"
+            placeholder="Rechercher sur l'annonceur"
+            id="header-search-input"
+          />
+          <button class="search-btn" id="header-search-btn">🔍</button>
+        </div>
+
+        <!-- NAVIGATION PRINCIPALE -->
+        <nav>
+          <a href="produits.html">Annonces</a>
+          <a href="apropos.html">À propos</a>
+          <!-- Lien vers le profil ou la connexion -->
+          <a
+            href="login.html"
+            id="profile-link-btn"
+            aria-label="Mon profil"
+            class="profile-link"
+            >👤</a
+          >
+          <!-- Lien vers le panier/favoris -->
+          <a href="panier.html" aria-label="Mon panier" class="basket-btn"
+            >🧺</a
+          >
+        </nav>
+
+        <!-- BOUTON DE CHANGEMENT DE THÈME (Clair/Sombre) -->
+        <button id="theme-toggle" class="theme-btn">
+          <span class="theme-icon">🌞</span>
+        </button>
+      </div>
+
+      <!-- BARRE DE CATÉGORIES -->
+      <div class="categories-bar">
+        <div class="categories-container">
+          <a href="produits.html?cat=immobilier" class="cat-link"
+            >🏠 Immobilier</a
+          >
+          <a href="produits.html?cat=vehicules" class="cat-link"
+            >🚗 Véhicules</a
+          >
+          <a href="produits.html?cat=electronique" class="cat-link"
+            >📱 Électronique</a
+          >
+          <a href="produits.html?cat=vetements" class="cat-link">👕 Mode</a>
+          <a href="produits.html?cat=mobilier" class="cat-link">🪑 Mobilier</a>
+          <a href="produits.html?cat=emploi" class="cat-link">💼 Emploi</a>
+          <a href="produits.html?cat=formation" class="cat-link"
+            >🎓 Formation</a
+          >
+          <a href="produits.html?cat=services" class="cat-link">🔧 Services</a>
+          <a href="produits.html?cat=loisirs" class="cat-link">🎮 Loisirs</a>
+          <a href="produits.html?cat=livres" class="cat-link">📚 Livres</a>
+        </div>
+      </div>
+    </header>
+
+    <!-- Fil d'Ariane -->
+    <div class="breadcrumb">
+      <div class="breadcrumb-inner">
+        <a href="../index.html">Accueil</a>
+        <span>›</span>
+        <span>Inscription</span>
+      </div>
+    </div>
+
+    <main>
+      <!-- Conteneur d'authentification -->
+      <div class="auth-container">
+        <div class="auth-box">
+          <div class="auth-icon">✍️</div>
+          <h2>Créer mon compte</h2>
+          <p class="auth-subtitle">
+            Rejoignez la communauté L'annonceur gratuitement
+          </p>
+
+          <!-- Formulaire d'inscription : l'ID 'form-register' est utilisé par scripts.js -->
+          <form id="form-register" autocomplete="on" class="auth-form">
+            <div class="form-group">
+              <label for="pseudonyme">Pseudonyme</label>
+              <input
+                type="text"
+                name="pseudonyme"
+                id="pseudonyme"
+                required
+                placeholder="Choisissez un pseudo"
+              />
+            </div>
+            <div class="form-group">
+              <label for="email">Adresse Email</label>
+              <input
+                type="email"
+                name="email"
+                id="email"
+                required
+                autocomplete="email"
+                placeholder="votre@email.com"
+              />
+            </div>
+            <div class="form-group">
+              <label for="mot_de_passe">Mot de passe</label>
+              <input
+                type="password"
+                name="mot_de_passe"
+                id="mot_de_passe"
+                required
+                placeholder="Minimum 8 caractères"
+                minlength="8"
+              />
+              <small class="form-help"
+                >Sécurité : Utilisez au moins 8 caractères</small
+              >
+            </div>
+            <!-- Bouton de soumission -->
+            <button
+              type="submit"
+              class="btn-primary"
+              style="margin-top: 8px; width: 100%"
+            >
+              S'inscrire maintenant
+            </button>
+            <!-- Zone de message pour les erreurs ou le succès -->
+            <div id="form-register-message" class="form-message"></div>
+          </form>
+
+          <!-- Lien vers la connexion si déjà inscrit -->
+          <div class="auth-links" style="margin-top: 20px">
+            <p>Vous avez déjà un compte sur L'annonceur ?</p>
+            <a
+              href="login.html"
+              class="btn-secondary"
+              style="display: block; width: 100%"
+              >Se connecter à mon espace</a
+            >
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- FOOTER DU SITE -->
+    <footer>
+      <div class="footer-container">
+        <!-- SECTION À PROPOS -->
+        <div class="footer-section footer-about">
+          <h3>À propos de L'annonceur</h3>
+          <p>
+            Votre plateforme de confiance pour publier et découvrir des annonces
+            locales. Connectez acheteurs et vendeurs en toute sécurité.
+          </p>
+          <div class="footer-socials">
+            <a href="#" class="social-link" title="Facebook">f</a>
+            <a href="#" class="social-link" title="Twitter">𝕏</a>
+            <a href="#" class="social-link" title="Instagram">📷</a>
+            <a href="#" class="social-link" title="LinkedIn">in</a>
+          </div>
+        </div>
+
+        <!-- SECTION NAVIGATION -->
+        <div class="footer-section">
+          <h3>Navigation</h3>
+          <ul>
+            <li><a href="../index.html">Accueil</a></li>
+            <li><a href="produits.html">Parcourir les annonces</a></li>
+            <li><a href="apropos.html">À propos de nous</a></li>
+            <li><a href="#">Tarifs & plans</a></li>
+            <li><a href="#">Blog</a></li>
+          </ul>
+        </div>
+
+        <!-- SECTION SERVICES -->
+        <div class="footer-section">
+          <h3>Services</h3>
+          <ul>
+            <li><a href="signup.html">Créer un compte</a></li>
+            <li><a href="dashboard.html">Déposer une annonce</a></li>
+            <li><a href="login.html">Votre profil</a></li>
+            <li><a href="#">Favoris</a></li>
+            <li><a href="dashboard.html">Mes annonces</a></li>
+          </ul>
+        </div>
+
+        <!-- SECTION LÉGAL & SUPPORT -->
+        <div class="footer-section">
+          <h3>Légal & Support</h3>
+          <ul>
+            <li><a href="#">Conditions générales</a></li>
+            <li><a href="#">Politique de confidentialité</a></li>
+            <li><a href="#">Mentions légales</a></li>
+            <li><a href="#">Contracter</a></li>
+            <li><a href="#">Signaler un contenu</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- SECTION BASSE : COPYRIGHT -->
+      <div class="footer-bottom">
+        <p>&copy; 2025 L'annonceur. Tous droits réservés.</p>
+      </div>
+    </footer>
+
+    <!-- Scripts globaux (gère l'envoi du formulaire via AJAX) -->
+    <script src="../js/scripts.js"></script>
+  </body>
+</html>

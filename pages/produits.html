@@ -1,0 +1,616 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Annonces — L'annonceur</title>
+    <!-- Favicon -->
+    <link rel="icon" href="../images/favicon.ico" />
+    <!-- Polices -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Style principal -->
+    <link rel="stylesheet" href="../css/index.css" />
+  </head>
+  <body>
+    <!-- HEADER DU SITE -->
+    <header>
+      <div class="header-container">
+        <!-- LOGO DU SITE -->
+        <div class="logo">
+          <a href="../index.html"><strong>L'annonceur</strong></a>
+        </div>
+
+        <!-- BARRE DE RECHERCHE GLOBALE -->
+        <div class="search-bar">
+          <input
+            type="text"
+            placeholder="Rechercher sur l'annonceur"
+            id="header-search-input"
+          />
+          <button class="search-btn" id="header-search-btn">🔍</button>
+        </div>
+
+        <!-- NAVIGATION PRINCIPALE -->
+        <nav>
+          <a href="produits.html">Annonces</a>
+          <a href="apropos.html">À propos</a>
+          <!-- Lien vers le profil ou la connexion -->
+          <a
+            href="login.html"
+            id="profile-link-btn"
+            aria-label="Mon profil"
+            class="profile-link"
+            >👤</a
+          >
+          <!-- Lien vers le panier/favoris -->
+          <a href="panier.html" aria-label="Mon panier" class="basket-btn"
+            >🧺</a
+          >
+        </nav>
+
+        <!-- BOUTON DE CHANGEMENT DE THÈME (Clair/Sombre) -->
+        <button id="theme-toggle" class="theme-btn">
+          <span class="theme-icon">🌞</span>
+        </button>
+      </div>
+
+      <!-- BARRE DE CATÉGORIES -->
+      <div class="categories-bar">
+        <div class="categories-container">
+          <a href="produits.html?cat=immobilier" class="cat-link"
+            >🏠 Immobilier</a
+          >
+          <a href="produits.html?cat=vehicules" class="cat-link"
+            >🚗 Véhicules</a
+          >
+          <a href="produits.html?cat=electronique" class="cat-link"
+            >📱 Électronique</a
+          >
+          <a href="produits.html?cat=vetements" class="cat-link">👕 Mode</a>
+          <a href="produits.html?cat=mobilier" class="cat-link">🪑 Mobilier</a>
+          <a href="produits.html?cat=emploi" class="cat-link">💼 Emploi</a>
+          <a href="produits.html?cat=formation" class="cat-link"
+            >🎓 Formation</a
+          >
+          <a href="produits.html?cat=services" class="cat-link">🔧 Services</a>
+          <a href="produits.html?cat=loisirs" class="cat-link">🎮 Loisirs</a>
+          <a href="produits.html?cat=livres" class="cat-link">📚 Livres</a>
+        </div>
+      </div>
+    </header>
+
+    <!-- Fil d'Ariane -->
+    <div class="breadcrumb">
+      <div class="breadcrumb-inner">
+        <a href="../index.html">Accueil</a>
+        <span>›</span>
+        <span id="breadcrumb-cat">Toutes les annonces</span>
+      </div>
+    </div>
+
+    <main>
+      <!-- En-tête de la page catalogue -->
+      <div class="section-header">
+        <div
+          class="section-header-inner"
+          style="max-width: 1200px; margin: 0 auto; padding: 20px"
+        >
+          <h1 id="page-title">Toutes les annonces</h1>
+          <p id="page-subtitle">
+            Parcourez notre sélection d'articles d'occasion et neufs.
+          </p>
+        </div>
+      </div>
+
+      <!-- Mise en page principale : Filtres à gauche, Grille à droite -->
+      <div
+        class="products-layout"
+        style="
+          max-width: 1200px;
+          margin: 0 auto;
+          padding: 0 20px;
+          display: grid;
+          grid-template-columns: 250px 1fr;
+          gap: 30px;
+        "
+      >
+        <!-- BARRE LATÉRALE DE FILTRES -->
+        <aside
+          class="filters-sidebar"
+          style="
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 20px;
+            align-self: start;
+            position: sticky;
+            top: 100px;
+          "
+        >
+          <div class="filter-block" style="margin-bottom: 25px">
+            <div
+              class="filter-title"
+              style="
+                font-weight: 700;
+                margin-bottom: 15px;
+                color: var(--blue);
+                text-transform: uppercase;
+                font-size: 0.85rem;
+              "
+            >
+              Catégories
+            </div>
+            <!-- Sélecteur de catégorie par boutons radio -->
+            <label
+              class="filter-item"
+              style="display: block; margin-bottom: 8px; cursor: pointer"
+              ><input type="radio" name="cat-radio" value="" checked />
+              Toutes</label
+            >
+            <label
+              class="filter-item"
+              style="display: block; margin-bottom: 8px; cursor: pointer"
+              ><input type="radio" name="cat-radio" value="immobilier" /> 🏠
+              Immobilier</label
+            >
+            <label
+              class="filter-item"
+              style="display: block; margin-bottom: 8px; cursor: pointer"
+              ><input type="radio" name="cat-radio" value="vehicules" /> 🚗
+              Véhicules</label
+            >
+            <label
+              class="filter-item"
+              style="display: block; margin-bottom: 8px; cursor: pointer"
+              ><input type="radio" name="cat-radio" value="electronique" /> 📱
+              Électronique</label
+            >
+            <label
+              class="filter-item"
+              style="display: block; margin-bottom: 8px; cursor: pointer"
+              ><input type="radio" name="cat-radio" value="vetements" /> 👕
+              Mode</label
+            >
+            <label
+              class="filter-item"
+              style="display: block; margin-bottom: 8px; cursor: pointer"
+              ><input type="radio" name="cat-radio" value="mobilier" /> 🪑
+              Mobilier</label
+            >
+          </div>
+
+          <div class="filter-block">
+            <div
+              class="filter-title"
+              style="
+                font-weight: 700;
+                margin-bottom: 15px;
+                color: var(--blue);
+                text-transform: uppercase;
+                font-size: 0.85rem;
+              "
+            >
+              Prix (€)
+            </div>
+            <div
+              class="filter-price-row"
+              style="display: flex; align-items: center; gap: 10px"
+            >
+              <input
+                type="number"
+                id="prix-min"
+                placeholder="Min"
+                min="0"
+                style="
+                  width: 100%;
+                  padding: 8px;
+                  border: 1px solid var(--border);
+                  border-radius: 4px;
+                "
+              />
+              <span>—</span>
+              <input
+                type="number"
+                id="prix-max"
+                placeholder="Max"
+                min="0"
+                style="
+                  width: 100%;
+                  padding: 8px;
+                  border: 1px solid var(--border);
+                  border-radius: 4px;
+                "
+              />
+            </div>
+            <button
+              class="btn-primary"
+              onclick="applyFilters()"
+              style="width: 100%; margin-top: 15px"
+            >
+              Filtrer
+            </button>
+          </div>
+        </aside>
+
+        <!-- ZONE PRINCIPALE : BARRE D'OUTILS ET GRILLE -->
+        <div class="products-main">
+          <!-- Barre d'outils (Recherche et Tri) -->
+          <div
+            class="products-toolbar"
+            style="
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+              margin-bottom: 20px;
+              flex-wrap: wrap;
+              gap: 15px;
+            "
+          >
+            <div
+              class="search-wrap"
+              style="
+                flex: 1;
+                max-width: 400px;
+                display: flex;
+                background: var(--white);
+                border: 1px solid var(--border);
+                border-radius: 20px;
+                padding: 5px 15px;
+              "
+            >
+              <input
+                type="text"
+                id="search-input"
+                placeholder="Rechercher par mot-clé..."
+                style="
+                  flex: 1;
+                  border: none;
+                  outline: none;
+                  background: transparent;
+                  padding: 8px;
+                "
+              />
+              <span style="padding: 8px">🔍</span>
+            </div>
+
+            <div class="products-sort">
+              <label
+                for="sort-select"
+                style="font-size: 0.9rem; color: var(--muted)"
+                >Trier par :</label
+              >
+              <select
+                id="sort-select"
+                style="
+                  padding: 8px;
+                  border: 1px solid var(--border);
+                  border-radius: 4px;
+                  background: var(--white);
+                  margin-left: 10px;
+                "
+              >
+                <option value="date">Plus récentes</option>
+                <option value="prix-asc">Prix croissant</option>
+                <option value="prix-desc">Prix décroissant</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Compteur de résultats -->
+          <div
+            class="products-count"
+            id="products-count"
+            style="margin-bottom: 15px; font-weight: 600; color: var(--muted)"
+          >
+            Chargement...
+          </div>
+
+          <!-- Grille des annonces -->
+          <div
+            class="products-grid"
+            id="products-grid"
+            style="
+              display: grid;
+              grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+              gap: 20px;
+            "
+          >
+            <div class="loading-message">
+              Chargement des annonces en cours...
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- FOOTER DU SITE -->
+    <footer>
+      <div class="footer-container">
+        <!-- SECTION À PROPOS -->
+        <div class="footer-section footer-about">
+          <h3>À propos de L'annonceur</h3>
+          <p>
+            Votre plateforme de confiance pour publier et découvrir des annonces
+            locales. Connectez acheteurs et vendeurs en toute sécurité.
+          </p>
+          <div class="footer-socials">
+            <a href="#" class="social-link" title="Facebook">f</a>
+            <a href="#" class="social-link" title="Twitter">𝕏</a>
+            <a href="#" class="social-link" title="Instagram">📷</a>
+            <a href="#" class="social-link" title="LinkedIn">in</a>
+          </div>
+        </div>
+
+        <!-- SECTION NAVIGATION -->
+        <div class="footer-section">
+          <h3>Navigation</h3>
+          <ul>
+            <li><a href="../index.html">Accueil</a></li>
+            <li><a href="produits.html">Parcourir les annonces</a></li>
+            <li><a href="apropos.html">À propos de nous</a></li>
+            <li><a href="#">Tarifs & plans</a></li>
+            <li><a href="#">Blog</a></li>
+          </ul>
+        </div>
+
+        <!-- SECTION SERVICES -->
+        <div class="footer-section">
+          <h3>Services</h3>
+          <ul>
+            <li><a href="signup.html">Créer un compte</a></li>
+            <li><a href="dashboard.html">Déposer une annonce</a></li>
+            <li><a href="login.html">Votre profil</a></li>
+            <li><a href="#">Favoris</a></li>
+            <li><a href="dashboard.html">Mes annonces</a></li>
+          </ul>
+        </div>
+
+        <!-- SECTION LÉGAL & SUPPORT -->
+        <div class="footer-section">
+          <h3>Légal & Support</h3>
+          <ul>
+            <li><a href="#">Conditions générales</a></li>
+            <li><a href="#">Politique de confidentialité</a></li>
+            <li><a href="#">Mentions légales</a></li>
+            <li><a href="#">Contracter</a></li>
+            <li><a href="#">Signaler un contenu</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- SECTION BASSE : COPYRIGHT -->
+      <div class="footer-bottom">
+        <p>&copy; 2025 L'annonceur. Tous droits réservés.</p>
+      </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="../js/scripts.js"></script>
+
+    <script>
+      /**
+       * GESTION DU CATALOGUE DE PRODUITS
+       * Ce script gère le chargement dynamique, la recherche et le filtrage des annonces.
+       */
+      var currentAnnonces = []; // Stockage local des données reçues de l'API
+
+      // Récupération des paramètres de l'URL (catégorie, recherche)
+      function getUrlParams() {
+        var params = new URLSearchParams(window.location.search);
+        return {
+          cat: params.get("cat") || "",
+          q: params.get("q") || "",
+        };
+      }
+
+      /**
+       * Chargement des annonces depuis l'API PHP
+       */
+      function loadAnnonces() {
+        var params = getUrlParams();
+        var apiUrl = "../php/api/get_annonces.php?page=1";
+
+        // Ajout de la catégorie si présente dans l'URL
+        if (params.cat) apiUrl += "&cat=" + encodeURIComponent(params.cat);
+
+        fetch(apiUrl)
+          .then(function (res) {
+            return res.json();
+          })
+          .then(function (data) {
+            currentAnnonces = data.annonces || [];
+
+            // Mise à jour de l'interface
+            updateUI(params);
+
+            // Filtrage initial si une recherche est présente dans l'URL
+            if (params.q) {
+              document.getElementById("search-input").value = params.q;
+              filterBySearch(params.q);
+            } else {
+              renderGrid(currentAnnonces);
+            }
+          })
+          .catch(function (err) {
+            console.error("Erreur API:", err);
+            document.getElementById("products-grid").innerHTML =
+              '<div class="error-message">Impossible de charger les annonces.</div>';
+          });
+      }
+
+      /**
+       * Mise à jour des éléments textuels de la page
+       */
+      function updateUI(params) {
+        var title = params.cat
+          ? params.cat.charAt(0).toUpperCase() + params.cat.slice(1)
+          : "Toutes les annonces";
+        document.getElementById("page-title").textContent = title;
+        document.getElementById("breadcrumb-cat").textContent = title;
+
+        // Sélectionner le bouton radio correspondant
+        var radio = document.querySelector(
+          'input[name="cat-radio"][value="' + params.cat + '"]',
+        );
+        if (radio) radio.checked = true;
+      }
+
+      /**
+       * Affichage de la grille HTML à partir d'un tableau d'annonces
+       */
+      function renderGrid(annonces) {
+        var grid = document.getElementById("products-grid");
+        var countEl = document.getElementById("products-count");
+
+        countEl.textContent = annonces.length + " annonce(s) trouvée(s)";
+
+        if (annonces.length === 0) {
+          grid.innerHTML =
+            '<div class="no-products" style="grid-column: 1/-1; text-align: center; padding: 50px; background: var(--white); border-radius: 8px;">Aucune annonce ne correspond à vos critères.</div>';
+          return;
+        }
+
+        grid.innerHTML = annonces
+          .map(function (a) {
+            var prix = parseFloat(a.prix).toLocaleString("fr-FR");
+            var img = a.image_url
+              ? '<img src="../uploads/' +
+                a.image_url +
+                '" alt="' +
+                a.titre +
+                '">'
+              : '<div class="no-img" style="height:100%; display:flex; align-items:center; justify-content:center; font-size:3rem; background:#eee;">📦</div>';
+
+            return (
+              '<div class="product-card" style="background: var(--white); border: 1px solid var(--border); border-radius: 8px; overflow: hidden; display: flex; flex-direction: column;">' +
+              '<div class="product-image" style="height: 180px; overflow: hidden;">' +
+              img +
+              "</div>" +
+              '<div class="product-card-body" style="padding: 15px; flex: 1; display: flex; flex-direction: column;">' +
+              '<div class="product-price" style="font-size: 1.2rem; font-weight: 700; color: var(--blue); margin-bottom: 5px;">' +
+              prix +
+              " €</div>" +
+              '<div class="product-title" style="font-weight: 600; margin-bottom: 10px;">' +
+              a.titre +
+              "</div>" +
+              '<span class="product-cat" style="font-size: 0.75rem; color: var(--blue); background: var(--blue-lt); padding: 2px 8px; border-radius: 3px; align-self: flex-start; margin-bottom: 10px;">' +
+              (a.categorie || "Divers") +
+              "</span>" +
+              '<div class="product-desc" style="font-size: 0.85rem; color: var(--muted); margin-bottom: 15px; flex: 1;">' +
+              (a.description ? a.description.substring(0, 80) + "..." : "") +
+              "</div>" +
+              '<div style="display: flex; gap: 8px;">' +
+              '<button class="btn-primary" onclick="alert(\'☎️ Contact : ' +
+              (a.contact || "Non renseigné") +
+              '\')" style="flex: 1;">Contacter</button>' +
+              '<button class="btn-add-cart" data-product-id="' +
+              a.id +
+              '" style="flex: 0.8; background: var(--gold); color: var(--text); border: none; border-radius: 8px; padding: 10px; font-weight: 600; cursor: pointer;">🧺 Ajouter</button>' +
+              "</div>" +
+              "</div>" +
+              "</div>"
+            );
+          })
+          .join("");
+
+        // Ajouter les événements sur les boutons "Ajouter au panier"
+        document.querySelectorAll(".btn-add-cart").forEach(function (btn) {
+          btn.addEventListener("click", function (e) {
+            e.preventDefault();
+            addToCart(btn.dataset.productId);
+          });
+        });
+      }
+
+      /**
+       * Filtrage par recherche textuelle
+       */
+      function filterBySearch(query) {
+        var q = query.toLowerCase();
+        var filtered = currentAnnonces.filter(function (a) {
+          return (
+            a.titre.toLowerCase().includes(q) ||
+            (a.description && a.description.toLowerCase().includes(q))
+          );
+        });
+        renderGrid(filtered);
+      }
+
+      /**
+       * Application des filtres de prix
+       */
+      function applyFilters() {
+        var min = parseFloat(document.getElementById("prix-min").value) || 0;
+        var max =
+          parseFloat(document.getElementById("prix-max").value) || Infinity;
+
+        var filtered = currentAnnonces.filter(function (a) {
+          var p = parseFloat(a.prix);
+          return p >= min && p <= max;
+        });
+        renderGrid(filtered);
+      }
+
+      // Événement : Recherche en temps réel
+      document
+        .getElementById("search-input")
+        .addEventListener("input", function () {
+          filterBySearch(this.value);
+        });
+
+      // Événement : Changement de catégorie via les radios
+      document
+        .querySelectorAll('input[name="cat-radio"]')
+        .forEach(function (radio) {
+          radio.addEventListener("change", function () {
+            window.location.href =
+              "produits.html?cat=" + encodeURIComponent(this.value);
+          });
+        });
+
+      // Initialisation au chargement
+      loadAnnonces();
+
+      /**
+       * Ajouter un produit au panier
+       */
+      function addToCart(productId) {
+        // Vérifier si l'utilisateur est connecté
+        if (localStorage.getItem("isLoggedIn") !== "true") {
+          alert(
+            "Veuillez vous connecter pour ajouter un article à vos favoris.",
+          );
+          window.location.href = "login.html";
+          return;
+        }
+
+        // Ajouter au panier via l'API
+        fetch("../php/api/ajouter_panier.php", {
+          method: "POST",
+          headers: { "Content-Type": "application/x-www-form-urlencoded" },
+          body: "produit_id=" + productId,
+        })
+          .then(function (r) {
+            return r.json();
+          })
+          .then(function (json) {
+            if (json.succes) {
+              alert("✓ Article ajouté à vos favoris!");
+            } else {
+              alert(
+                "Erreur : " + (json.erreur || "Impossible d'ajouter l'article"),
+              );
+            }
+          })
+          .catch(function (err) {
+            console.error("Erreur:", err);
+            alert("Erreur réseau");
+          });
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,293 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>L'annonceur — Marketplace locale</title>
+    <!-- Favicon du site -->
+    <link rel="icon" href="images/favicon.ico" />
+    <!-- Police de caractères moderne -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Feuille de style principale -->
+    <link rel="stylesheet" href="css/index.css" />
+  </head>
+  <body>
+    <!-- HEADER DU SITE -->
+    <header>
+      <div class="header-container">
+        <!-- LOGO DU SITE -->
+        <div class="logo">
+          <a href="index.html"><strong>L'annonceur</strong></a>
+        </div>
+
+        <!-- BARRE DE RECHERCHE GLOBALE -->
+        <div class="search-bar">
+          <input
+            type="text"
+            placeholder="Rechercher sur l'annonceur"
+            id="header-search-input"
+          />
+          <button class="search-btn" id="header-search-btn">🔍</button>
+        </div>
+
+        <!-- NAVIGATION PRINCIPALE -->
+        <nav>
+          <a href="pages/produits.html">Annonces</a>
+          <a href="pages/apropos.html">À propos</a>
+          <!-- Lien vers le profil ou la connexion -->
+          <a
+            href="pages/login.html"
+            id="profile-link-btn"
+            aria-label="Mon profil"
+            class="profile-link"
+            >👤</a
+          >
+          <!-- Lien vers le panier/favoris -->
+          <a href="pages/panier.html" aria-label="Mon panier" class="basket-btn"
+            >🧺</a
+          >
+        </nav>
+
+        <!-- BOUTON DE CHANGEMENT DE THÈME (Clair/Sombre) -->
+        <button id="theme-toggle" class="theme-btn">
+          <span class="theme-icon">🌞</span>
+        </button>
+      </div>
+
+      <!-- BARRE DE CATÉGORIES -->
+      <div class="categories-bar">
+        <div class="categories-container">
+          <a href="pages/produits.html?cat=immobilier" class="cat-link"
+            >🏠 Immobilier</a
+          >
+          <a href="pages/produits.html?cat=vehicules" class="cat-link"
+            >🚗 Véhicules</a
+          >
+          <a href="pages/produits.html?cat=electronique" class="cat-link"
+            >📱 Électronique</a
+          >
+          <a href="pages/produits.html?cat=vetements" class="cat-link"
+            >👕 Mode</a
+          >
+          <a href="pages/produits.html?cat=mobilier" class="cat-link"
+            >🪑 Mobilier</a
+          >
+          <a href="pages/produits.html?cat=emploi" class="cat-link"
+            >💼 Emploi</a
+          >
+          <a href="pages/produits.html?cat=formation" class="cat-link"
+            >🎓 Formation</a
+          >
+          <a href="pages/produits.html?cat=services" class="cat-link"
+            >🔧 Services</a
+          >
+          <a href="pages/produits.html?cat=loisirs" class="cat-link"
+            >🎮 Loisirs</a
+          >
+          <a href="pages/produits.html?cat=livres" class="cat-link"
+            >📚 Livres</a
+          >
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <!-- Section Héro : Présentation principale du site -->
+      <section class="hero">
+        <div class="hero-content">
+          <h1>Bienvenue sur L'annonceur</h1>
+          <p class="hero-subtitle">
+            Découvrez les meilleures annonces près de chez vous. Simple, rapide
+            et local.
+          </p>
+          <button
+            class="btn-primary hero-btn"
+            onclick="window.location.href = 'pages/produits.html'"
+          >
+            Explorer maintenant
+          </button>
+        </div>
+      </section>
+
+      <!-- Section des dernières annonces : Chargée dynamiquement depuis la base de données via PHP -->
+      <div class="section">
+        <div class="section-head">
+          <h2>Dernières annonces</h2>
+          <a href="pages/produits.html">Voir toutes les annonces →</a>
+        </div>
+        <!-- Conteneur pour les annonces injectées par JavaScript -->
+        <div class="ads-grid" id="annonces-accueil">
+          <div class="loading-message">Chargement des annonces en cours...</div>
+        </div>
+      </div>
+
+      <!-- Section Appel à l'action (CTA) : Visible uniquement pour les visiteurs non connectés -->
+      <section class="cta-section" id="cta-section">
+        <h2>Prêt à commencer ?</h2>
+        <p>
+          Rejoignez des milliers d'utilisateurs satisfaits et vendez vos objets
+          en quelques clics.
+        </p>
+        <div class="cta-buttons">
+          <a href="pages/signup.html" class="btn-primary"
+            >S'inscrire gratuitement</a
+          >
+          <a href="pages/produits.html" class="btn-secondary"
+            >Voir les annonces</a
+          >
+          <a href="pages/dashboard.html" class="btn-primary"
+            >Déposer une offre</a
+          >
+        </div>
+      </section>
+    </main>
+
+    <!-- FOOTER DU SITE -->
+    <footer>
+      <div class="footer-container">
+        <!-- SECTION À PROPOS -->
+        <div class="footer-section footer-about">
+          <h3>À propos de L'annonceur</h3>
+          <p>
+            Votre plateforme de confiance pour publier et découvrir des annonces
+            locales. Connectez acheteurs et vendeurs en toute sécurité.
+          </p>
+          <div class="footer-socials">
+            <a href="#" class="social-link" title="Facebook">f</a>
+            <a href="#" class="social-link" title="Twitter">𝕏</a>
+            <a href="#" class="social-link" title="Instagram">📷</a>
+            <a href="#" class="social-link" title="LinkedIn">in</a>
+          </div>
+        </div>
+
+        <!-- SECTION NAVIGATION -->
+        <div class="footer-section">
+          <h3>Navigation</h3>
+          <ul>
+            <li><a href="index.html">Accueil</a></li>
+            <li><a href="pages/produits.html">Parcourir les annonces</a></li>
+            <li><a href="pages/apropos.html">À propos de nous</a></li>
+            <li><a href="#">Tarifs & plans</a></li>
+            <li><a href="#">Blog</a></li>
+          </ul>
+        </div>
+
+        <!-- SECTION SERVICES -->
+        <div class="footer-section">
+          <h3>Services</h3>
+          <ul>
+            <li><a href="pages/signup.html">Créer un compte</a></li>
+            <li><a href="pages/dashboard.html">Déposer une annonce</a></li>
+            <li><a href="pages/login.html">Votre profil</a></li>
+            <li><a href="#">Favoris</a></li>
+            <li><a href="pages/dashboard.html">Mes annonces</a></li>
+          </ul>
+        </div>
+
+        <!-- SECTION LÉGAL & SUPPORT -->
+        <div class="footer-section">
+          <h3>Légal & Support</h3>
+          <ul>
+            <li><a href="#">Conditions générales</a></li>
+            <li><a href="#">Politique de confidentialité</a></li>
+            <li><a href="#">Mentions légales</a></li>
+            <li><a href="#">Contracter</a></li>
+            <li><a href="#">Signaler un contenu</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- SECTION BASSE : COPYRIGHT -->
+      <div class="footer-bottom">
+        <p>&copy; 2025 L'annonceur. Tous droits réservés.</p>
+      </div>
+    </footer>
+
+    <!-- Scripts globaux du projet -->
+    <script src="js/scripts.js"></script>
+
+    <script>
+      /**
+       * Chargement des dernières annonces depuis l'API PHP
+       * Cette fonction récupère les données de la base de données et les affiche sous forme de cartes.
+       */
+      document.addEventListener("DOMContentLoaded", function () {
+        // Appel à l'API de récupération des annonces (page 1 pour l'accueil)
+        fetch("php/api/get_annonces.php?page=1")
+          .then(function (res) {
+            if (!res.ok)
+              throw new Error("Erreur lors du chargement des données");
+            return res.json();
+          })
+          .then(function (data) {
+            var grid = document.getElementById("annonces-accueil");
+
+            // Si aucune annonce n'est trouvée dans la base de données
+            if (!data.annonces || data.annonces.length === 0) {
+              grid.innerHTML =
+                '<div class="no-products">Aucune annonce disponible pour le moment.<br>Soyez le premier à <a href="pages/dashboard.html" style="color:var(--blue)">publier une annonce</a> !</div>';
+              return;
+            }
+
+            // Génération du HTML pour chaque annonce (limité aux 8 premières)
+            grid.innerHTML = data.annonces
+              .slice(0, 8)
+              .map(function (annonce) {
+                // Formatage du prix et de la date
+                var prix = parseFloat(annonce.prix).toLocaleString("fr-FR");
+                var date = new Date(annonce.date_creation).toLocaleDateString(
+                  "fr-FR",
+                );
+
+                // Gestion de l'image (image par défaut si aucune n'est fournie)
+                var imgTag = annonce.image_url
+                  ? '<img src="uploads/' +
+                    annonce.image_url +
+                    '" alt="' +
+                    (annonce.titre || "Annonce") +
+                    '">'
+                  : '<div class="no-img-placeholder">📦</div>';
+
+                // Structure d'une carte d'annonce
+                return (
+                  '<div class="ad-card" onclick="window.location.href=\'pages/produits.html?q=' +
+                  encodeURIComponent(annonce.titre) +
+                  "'\">" +
+                  '<div class="ad-img">' +
+                  imgTag +
+                  "</div>" +
+                  '<div class="ad-body">' +
+                  '<div class="ad-price">' +
+                  prix +
+                  " €</div>" +
+                  '<div class="ad-title">' +
+                  (annonce.titre || "Sans titre") +
+                  "</div>" +
+                  '<div class="ad-meta">' +
+                  "<span>" +
+                  (annonce.categorie || "Divers") +
+                  "</span>" +
+                  '<span class="ad-meta-dot"></span>' +
+                  "<span>" +
+                  date +
+                  "</span>" +
+                  "</div>" +
+                  "</div>" +
+                  "</div>"
+                );
+              })
+              .join("");
+          })
+          .catch(function (error) {
+            console.error("Erreur:", error);
+            document.getElementById("annonces-accueil").innerHTML =
+              '<div class="no-products">Impossible de charger les annonces. Veuillez vérifier votre connexion à la base de données.</div>';
+          });
+      });
+    </script>
+  </body>
+</html>
